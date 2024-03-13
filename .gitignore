@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 responsive-halloween-website-2-main.zip
+esponsive-halloween-website-2-main/
 dist
 dist-ssr
 *.local
