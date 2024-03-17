@@ -6,12 +6,14 @@ import { HiMenuAlt2 } from "react-icons/hi";
 function App() {
   const [navOpen, setNavOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false);
-  console.log('scroll', scrolled);
+  const [showScroll, setShowScroll] = useState(false);
 
   const handleScroll = () => {
     if (window.scrollY >= 50) {
       setScrolled(true);
+      window.scrollY >= 350 && setShowScroll(true)
     } else {
+      window.scrollY < 350 && setShowScroll(false)
       setScrolled(false);
     }
   };
@@ -39,16 +41,16 @@ function App() {
             <div className={`nav__menu ${navOpen ? "show-menu" : ""}`} id="nav-menu">
               <ul className="nav__list">
                 <li className="nav__item">
-                  <a href="#" onClick={() => setNavOpen(false)} className="nav__link">Home</a>
+                  <a href="#home" onClick={() => setNavOpen(false)} className="nav__link">Home</a>
                 </li>
                 <li className="nav__item">
-                  <a href="#" onClick={() => setNavOpen(false)} className="nav__link">about us</a>
+                  <a href="#about" onClick={() => setNavOpen(false)} className="nav__link">about us</a>
                 </li>
                 <li className="nav__item">
-                  <a href="#" onClick={() => setNavOpen(false)} className="nav__link">items</a>
+                  <a href="#items" onClick={() => setNavOpen(false)} className="nav__link">items</a>
                 </li>
                 <li className="nav__item">
-                  <a href="#" onClick={() => setNavOpen(false)} className="nav__link">party</a>
+                  <a href="#party" onClick={() => setNavOpen(false)} className="nav__link">party</a>
                 </li>
               </ul>
 
@@ -98,7 +100,7 @@ function App() {
           </section>
 
           {/* <!--==================== CATEGORY ====================--> */}
-          <section className="category section">
+          <section className="category section" id='category'>
               <h2 className="section__title">Choose your <br /> spookey category</h2>
 
               <div className="category__container container grid">
@@ -156,7 +158,7 @@ function App() {
                 <h3 className="items__name">Candy Apple</h3>
                 <span className="items__price">$4.99</span>
                 <button className="items__button">
-                  <i class="fa-regular fa-heart"></i>
+                  <i className="fa-regular fa-heart"></i>
                 </button>
               </article>
 
@@ -165,7 +167,7 @@ function App() {
                 <h3 className="items__name">Wicked Broom</h3>
                 <span className="items__price">$12.99</span>
                 <button className="items__button">
-                  <i class="fa-regular fa-heart"></i>
+                  <i className="fa-regular fa-heart"></i>
                 </button>
               </article>
 
@@ -174,7 +176,7 @@ function App() {
                 <h3 className="items__name">Pumpkin</h3>
                 <span className="items__price">$7.99</span>
                 <button className="items__button">
-                  <i class="fa-regular fa-heart"></i>
+                  <i className="fa-regular fa-heart"></i>
                 </button>
               </article>
 
@@ -184,7 +186,7 @@ function App() {
                 <h3 className="items__name">Spooky Spider</h3>
                 <span className="items__price">$9.99</span>
                 <button className="items__button">
-                  <i class="fa-regular fa-heart"></i>
+                  <i className="fa-regular fa-heart"></i>
                 </button>
               </article>
 
@@ -194,7 +196,7 @@ function App() {
                 <h3 className="items__name">Witch Hat</h3>
                 <span className="items__price">$15.99</span>
                 <button className="items__button">
-                  <i class="fa-regular fa-heart"></i>
+                  <i className="fa-regular fa-heart"></i>
                 </button>
               </article>
             </div>
@@ -225,68 +227,76 @@ function App() {
 
       {/* <!--==================== FOOTER ====================--> */}
       <footer className="footer section">
-          <div className="footer__container container grid">
+        <div className="shape__small"></div>
+        <div className="shape__big"></div>
+        <div className="footer__container container grid">
+          <div>
+            <a href="#" className="footer__logo">
+              <img src="/src/assets/logo-skull.png" alt="logo image"/>
+              Halloween
+            </a>              
+            
+            <p className="footer__description">Enjoy the spookiest <br/> night of your life.</p>
+          </div>
+
+          <div className="footer__content">
             <div>
-              <a href="#" className="footer__logo">
-                <img src="/src/assets/logo-skull.png" alt="logo image"/>
-                Halloween
-              </a>              
-              
-              <p className="footer__description">Enjoy the spookiest <br/> night of your life.</p>
+              <h3 className="footer__title">About Us</h3>
+
+              <ul className="footer__links">
+                <li><a href="#" className="footer__link">About us</a></li>
+                <li><a href="#" className="footer__link">Features</a></li>
+                <li><a href="#" className="footer__link">News & Blog</a></li>
+              </ul>
             </div>
 
-            <div className="footer__content">
-              <div>
-                <h3 className="footer__title">About Us</h3>
+            <div>
+              <h3 className="footer__title">Services</h3>
 
-                <ul className="footer__links">
-                  <li><a href="#" className="footer__link">About us</a></li>
-                  <li><a href="#" className="footer__link">Features</a></li>
-                  <li><a href="#" className="footer__link">News & Blog</a></li>
-                </ul>
-              </div>
+              <ul className="footer__links">
+                <li><a href="#" className="footer__link">Pricing</a></li>
+                <li><a href="#" className="footer__link">Discounts</a></li>
+                <li><a href="#" className="footer__link">Rewards</a></li>
+              </ul>
+            </div>
 
-              <div>
-                <h3 className="footer__title">Services</h3>
+            <div>
+              <h3 className="footer__title">Company</h3>
 
-                <ul className="footer__links">
-                  <li><a href="#" className="footer__link">Pricing</a></li>
-                  <li><a href="#" className="footer__link">Discounts</a></li>
-                  <li><a href="#" className="footer__link">end a gift</a></li>
-                </ul>
-              </div>
+              <ul className="footer__links">
+                <li><a href="#" className="footer__link">Blog</a></li>
+                <li><a href="#" className="footer__link">Celebrations</a></li>
+                <li><a href="#" className="footer__link">About</a></li>
+              </ul>
+            </div>
 
-              <div>
-                <h3 className="footer__title">Company</h3>
+            <div>
+              <h3 className="footer__title">Social Media</h3>
 
-                <ul className="footer__links">
-                  <li><a href="#" className="footer__link">Blog</a></li>
-                  <li><a href="#" className="footer__link">Celebrations</a></li>
-                  <li><a href="#" className="footer__link">About</a></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="footer__title">Social Media</h3>
-
-                <ul className="footer__social">
-                  <a href="#" className="footer__social-link">
-                    <i className="fa-brands fa-facebook"></i>
-                  </a>
-                  <a href="#" className="footer__social-link">
-                    <i class="fa-brands fa-instagram"></i>
-                  </a>
-                  <a href="https://github.com/Steeve26" target='_blan' className="footer__social-link">
-                    <i class="fa-brands fa-github"></i>
-                  </a>
-                </ul>
-              </div>
+              <ul className="footer__social">
+                <a href="#" className="footer__social-link">
+                  <i className="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="#" className="footer__social-link">
+                  <i className="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://github.com/Steeve26" target='_blank' className="footer__social-link">
+                  <i className="fa-brands fa-github"></i>
+                </a>
+              </ul>
             </div>
           </div>
+
+          <img src="/src/assets/footer-tree1.png" alt="footer image" className='footer__tree-1' />
+          <img src="/src/assets/footer-tree2.png" alt="footer image" className='footer__tree-2' />
+        </div>
+        <span className="footer__copy">&copy; Copyright SteveBro. All rights reserved</span>
       </footer>
 
       {/* <!--========== SCROLL UP ==========--> */}
-      
+      <a href="#home" className={`scrollup ${showScroll && 'show-scroll'}`} id="scroll-up">
+        <i className="fa-solid fa-arrow-up"></i>
+      </a>
       
       {/* <!--=============== SCROLLREVEAL ===============--> */}
       {/* <script src=""></script>
