@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { IoClose } from "react-icons/io5";
 import { HiMenuAlt2 } from "react-icons/hi";
 import ScrollReveal from 'scrollreveal'
+import './App.css'
+import {bat, homePumpkin, logo, stars, texeture, tree1, tree2} from './exports.js'
 
 function App() {
   const [navOpen, setNavOpen] = useState(false)
@@ -47,13 +48,13 @@ function App() {
   return (
     <div>
 
-      <img src="./assets/shape-bg.png" alt="" className='shape__bg'/>
+      <img src={texeture} alt="" className='shape__bg'/>
 
       {/* <!--==================== HEADER ====================--> */}
       <header className={`header ${scrolled && 'bg-header'}`} id="header">
           <nav className="nav container">
             <a href="#" className='nav__logo'>
-              <img src="./assets/20240309_211246.png" alt="logo image" />
+              <img src={logo} alt="logo image" />
               <p>The Midnight Graveyard</p>
             </a>
           
@@ -78,7 +79,7 @@ function App() {
                 <IoClose size={25}/>
               </div>
 
-              <img src="./assets/nav-bat.png" alt="nav image" className="nav__img" />
+              <img src={bat} alt="nav image" className="nav__img" />
             </div>
 
             <div className="nav__toggle" id="nav-toggle"
@@ -99,8 +100,8 @@ function App() {
               <div className="home__data">
                 <h1 className="home__title">
                   <span>Halloween</span> Trick or Treat!!!
-                  <img src="./assets/stars.png" alt="home image" className='home__title-img-1' />
-                  <img src="./assets/stars.png" alt="home image" className='home__title-img-2' />
+                  <img src={stars} alt="home image" className='home__title-img-1' />
+                  <img src={stars} alt="home image" className='home__title-img-2' />
                 </h1>
 
                 <p className="home__description">
@@ -112,9 +113,9 @@ function App() {
                 <a href="#" className="button">Explore now!!!</a>
               </div>
 
-              <img src="./assets/home-pumpkin.png" alt="home image" className='home__img'/>
-              <img src="./assets/home-tree2.png" alt="home image" className='home__tree-1'/>
-              <img src="./assets/home-tree1.png" alt="home image" className='home__tree-2'/>
+              <img src={homePumpkin} alt="home image" className='home__img'/>
+              <img src={tree1} alt="home image" className='home__tree-1'/>
+              <img src={tree2} alt="home image" className='home__tree-2'/>
             </div>
           </section>
 
