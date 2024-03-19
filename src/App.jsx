@@ -47,13 +47,13 @@ function App() {
   return (
     <div>
 
-      <img src="/assets/shape-bg.png" alt="" className='shape__bg'/>
+      <img src="./assets/shape-bg.png" alt="" className='shape__bg'/>
 
       {/* <!--==================== HEADER ====================--> */}
       <header className={`header ${scrolled && 'bg-header'}`} id="header">
           <nav className="nav container">
             <a href="#" className='nav__logo'>
-              <img src="/assets/20240309_211246.png" alt="logo image" />
+              <img src="./assets/20240309_211246.png" alt="logo image" />
               <p>The Midnight Graveyard</p>
             </a>
           
@@ -78,7 +78,7 @@ function App() {
                 <IoClose size={25}/>
               </div>
 
-              <img src="/assets/nav-bat.png" alt="nav image" className="nav__img" />
+              <img src="./assets/nav-bat.png" alt="nav image" className="nav__img" />
             </div>
 
             <div className="nav__toggle" id="nav-toggle"
@@ -99,8 +99,8 @@ function App() {
               <div className="home__data">
                 <h1 className="home__title">
                   <span>Halloween</span> Trick or Treat!!!
-                  <img src="/assets/stars.png" alt="home image" className='home__title-img-1' />
-                  <img src="/assets/stars.png" alt="home image" className='home__title-img-2' />
+                  <img src="./assets/stars.png" alt="home image" className='home__title-img-1' />
+                  <img src="./assets/stars.png" alt="home image" className='home__title-img-2' />
                 </h1>
 
                 <p className="home__description">
@@ -112,9 +112,9 @@ function App() {
                 <a href="#" className="button">Explore now!!!</a>
               </div>
 
-              <img src="/assets/home-pumpkin.png" alt="home image" className='home__img'/>
-              <img src="/assets/home-tree2.png" alt="home image" className='home__tree-1'/>
-              <img src="/assets/home-tree1.png" alt="home image" className='home__tree-2'/>
+              <img src="./assets/home-pumpkin.png" alt="home image" className='home__img'/>
+              <img src="./assets/home-tree2.png" alt="home image" className='home__tree-1'/>
+              <img src="./assets/home-tree1.png" alt="home image" className='home__tree-2'/>
             </div>
           </section>
 
@@ -124,27 +124,27 @@ function App() {
 
               <div className="category__container container grid">
                 <div className="category__card">
-                  <img src="/assets/category-pumpkin.png" alt="category image" className='category__img'/>
+                  <img src="./assets/category-pumpkin.png" alt="category image" className='category__img'/>
                   <h3 className="category__title">Pumpkins</h3>
                   <p className="category__description">Light up horror pumpkins to scare at night</p>
-                  <img src="/assets/stars.png" alt="category image" className='category__star' />
+                  <img src="./assets/stars.png" alt="category image" className='category__star' />
                 </div>
                 
                 <div className="category__card">
-                  <img src="/assets/category-ghost.png" alt="category image" className='category__img'/>
+                  <img src="./assets/category-ghost.png" alt="category image" className='category__img'/>
                   <h3 className="category__title">Ghost</h3>
                   <p className="category__description">Spooky ghosts to scare in the most haunted houses</p>
-                  <img src="/assets/stars.png" alt="category image" className='category__star' />
+                  <img src="./assets/stars.png" alt="category image" className='category__star' />
                 </div>
                 
                 <div className="category__card">
-                  <img src="/assets/category-witch-hat.png" alt="category image" className='category__img'/>
+                  <img src="./assets/category-witch-hat.png" alt="category image" className='category__img'/>
                   <h3 className="category__title">Witch Hat</h3>
                   <p className="category__description">
                     The most elegant witch hats you can vlear and scare
                   </p>
                   
-                  <img src="/assets/stars.png" alt="category image" className='category__star' />
+                  <img src="./assets/stars.png" alt="category image" className='category__star' />
                   
                 </div>
               </div>
@@ -164,7 +164,7 @@ function App() {
                   </p>
                   <a href="#" className="button">Know More!!!</a>
                 </div>
-                <img src="/assets/about-scare.png" alt="about image" className="about__img" />
+                <img src="./assets/about-scare.png" alt="about image" className="about__img" />
               </div>
           </section>
 
@@ -173,7 +173,7 @@ function App() {
             <h2 className="section__title">Select your <br/> accursed item</h2>
             <div className="items__container container grid">
               <article className="items__card">
-                <img src="/assets/item-apple.png" alt="items image" className="items__img" />
+                <img src="./assets/item-apple.png" alt="items image" className="items__img" />
                 <h3 className="items__name">Candy Apple</h3>
                 <span className="items__price">$4.99</span>
                 <button className="items__button">
@@ -182,7 +182,7 @@ function App() {
               </article>
 
               <article className="items__card">
-                <img src="/assets/item-broom.png" alt="items image" className="items__img" />
+                <img src="./assets/item-broom.png" alt="items image" className="items__img" />
                 <h3 className="items__name">Wicked Broom</h3>
                 <span className="items__price">$12.99</span>
                 <button className="items__button">
@@ -191,7 +191,7 @@ function App() {
               </article>
 
               <article className="items__card">
-                <img src="/assets/item-pumpkin.png" alt="items image" className="items__img" />
+                <img src="./assets/item-pumpkin.png" alt="items image" className="items__img" />
                 <h3 className="items__name">Pumpkin</h3>
                 <span className="items__price">$7.99</span>
                 <button className="items__button">
@@ -201,7 +201,7 @@ function App() {
 
 
               <article className="items__card">
-                <img src="/assets/item-spider.png" alt="items image" className="items__img" />
+                <img src="./assets/item-spider.png" alt="items image" className="items__img" />
                 <h3 className="items__name">Spooky Spider</h3>
                 <span className="items__price">$9.99</span>
                 <button className="items__button">
@@ -211,7 +211,7 @@ function App() {
 
 
               <article className="items__card">
-                <img src="/assets/item-witch-hat.png" alt="items image" className="items__img" />
+                <img src="./assets/item-witch-hat.png" alt="items image" className="items__img" />
                 <h3 className="items__name">Witch Hat</h3>
                 <span className="items__price">$15.99</span>
                 <button className="items__button">
@@ -236,10 +236,10 @@ function App() {
                   <a href="#" className="button">Join The Party!!!</a>
                 </div>
                 <div className="party__images">
-                  <img src="/assets/party-cauldron.png" alt="party image" className="party__img" />
+                  <img src="./assets/party-cauldron.png" alt="party image" className="party__img" />
 
-                  <img src="/assets/stars.png" alt="party image" className="party__star-1" />
-                  <img src="/assets/stars.png" alt="party image" className="party__star-2" /></div>
+                  <img src="./assets/stars.png" alt="party image" className="party__star-1" />
+                  <img src="./assets/stars.png" alt="party image" className="party__star-2" /></div>
               </div>
           </section>
       </main>
@@ -251,7 +251,7 @@ function App() {
         <div className="footer__container container grid">
           <div>
             <a href="#" className="footer__logo">
-              <img src="/assets/logo-skull.png" alt="logo image"/>
+              <img src="./assets/logo-skull.png" alt="logo image"/>
               Halloween
             </a>              
             
@@ -306,8 +306,8 @@ function App() {
             </div>
           </div>
 
-          <img src="/assets/footer-tree1.png" alt="footer image" className='footer__tree-1' />
-          <img src="/assets/footer-tree2.png" alt="footer image" className='footer__tree-2' />
+          <img src="./assets/footer-tree1.png" alt="footer image" className='footer__tree-1' />
+          <img src="./assets/footer-tree2.png" alt="footer image" className='footer__tree-2' />
         </div>
         <span className="footer__copy">&copy; Copyright SteveBro. All rights reserved</span>
       </footer>
