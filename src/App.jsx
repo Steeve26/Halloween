@@ -4,7 +4,9 @@ import { HiMenuAlt2 } from "react-icons/hi";
 import ScrollReveal from 'scrollreveal'
 import './App.css'
 import {bat, categoryPumpkin, gohst, homePumpkin, logo, 
-        stars, texeture, tree1, tree2, witchHat, wave1, wave2, scareCrow, itemApple, itemBroom, itemPumpkin, itemSpider, itemHat, cauldron, HalloweenTunes} from './exports.js'
+        stars, texeture, tree1, tree2, witchHat, wave1, 
+        wave2, scareCrow, itemApple, itemBroom, itemPumpkin, 
+        itemSpider, itemHat, cauldron, HalloweenTunes, footerTree1, footerTree2, skull} from './exports.js'
 import audioLoader from './components/audioLoader.jsx';
 const tunes = lazy(() => import('../src/assets/Halloween tunes.mp3')) 
 
@@ -297,7 +299,7 @@ function App() {
         <div className="footer__container container grid">
           <div>
             <a href="#" className="footer__logo">
-              <img src="./assets/logo-skull.png" alt="logo image"/>
+              <img src={skull} alt="logo image"/>
               Halloween
             </a>              
             
@@ -352,15 +354,15 @@ function App() {
             </div>
           </div>
 
-          <img src="./assets/footer-tree1.png" alt="footer image" className='footer__tree-1' />
-          <img src="./assets/footer-tree2.png" alt="footer image" className='footer__tree-2' />
+          <img src={footerTree1} alt="footer image" className='footer__tree-1' />
+          <img src={footerTree2} alt="footer image" className='footer__tree-2' />
         </div>
         <span className="footer__copy">&copy; Copyright SteveBro. All rights reserved</span>
       </footer>
 
       {/* <!--========== SCROLL UP ==========--> */}
       <a href="#home" className={`scrollup ${showScroll && 'show-scroll'}`} id="scroll-up">
-        <i className="fa-solid fa-arrow-up"></i>
+        <i className="fa-solid fa-arrow-up" style={{ fontSize: '1.5rem'}}></i>
       </a>
       
       {/* <!--=============== SCROLLREVEAL ===============--> */}

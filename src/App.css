@@ -734,7 +734,7 @@ body {
   font-size: 1.1rem;
   background-color: var(--container-color);
   box-shadow: 0 4px 8px #06050599;
-  padding: 1rem;
+  padding: .8rem;
   border-radius: .35rem;
   display: inline-flex;
   z-index: var(--z-tooltip);

@@ -16,9 +16,12 @@ import itemSpider from './assets/item-spider.png'
 import itemHat from './assets/item-witch-hat.png'
 import cauldron from './assets/party-cauldron.png'
 import HalloweenTunes from './assets/Halloween tunes.mp3'
+import footerTree1 from './assets/footer-tree1.png'
+import footerTree2 from './assets/footer-tree2.png'
+import skull from './assets/logo-skull.png'
 import wave1 from './assets/audio-wave-white.svg'
 import wave2 from './assets/audio-wave-orange.svg'
 
 export {logo, texeture, bat, stars, homePumpkin, tree1, tree2, 
 categoryPumpkin, witchHat, gohst, scareCrow, itemApple, itemBroom, 
-itemPumpkin, itemSpider, itemHat, cauldron, HalloweenTunes, wave1, wave2}
+itemPumpkin, itemSpider, itemHat, cauldron, HalloweenTunes, footerTree1, footerTree2, skull, wave1, wave2}
