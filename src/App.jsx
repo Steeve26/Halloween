@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import { HiMenuAlt2 } from "react-icons/hi";
 import ScrollReveal from 'scrollreveal'
@@ -10,56 +10,21 @@ import {bat, categoryPumpkin, gohst, homePumpkin, logo,
         footerTree2, skull} from './exports.js'
 import CategoryCard from './components/categoryCard.jsx'
 import ItemCard from './components/article.jsx';
-import { Link } from 'react-router-dom';
 import FooterContainer from './components/footerContainer.jsx';
-
-const tunes = lazy(() => import('../src/assets/Halloween tunes.mp3')) 
+import NavLinks from './components/navLinks.jsx';
+import SocialLinks from './components/socialLinks.jsx';
 
 function App() {
   const [navOpen, setNavOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
   const [pauseStatus, setPauseStatus] = useState(true)
-  console.log('ps', pauseStatus);
   const audioRef = useRef(null);
 
-  const tunes = new Audio('../src/assets/Halloween tunes.mp3')
-
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        setHasInteracted(true);
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
-
-  // useEffect(() => {
-  //   if(audioRef.current) {
-  //     setPauseStatus(audioRef.current.pause)
-  //   }
-  // }, [audioRef.current])
-
   const playTunes = (event) => {
-    // console.log(hasInteracted);
-    // event._reactName == 'onClick' && console.log('test', !audioRef.current.paused, event.target.classList.contains("play"))
-    // console.log('paused', audioRef.current.paused);
-    // if ((!audioRef.current.paused && audioRef.current.currentTime !== 0) && hasInteracted) {
-    //   audioRef.current.play();
-    // }
-    // event._reactName == 'onClick' && 
-    // !audioRef.current.paused ?
-    // event.target.classList.contains("play") && audioRef.current.pause() :
-    // audioRef.current.play();
     if (event.target.classList.contains("play")) {
-      console.log('test', audioRef.current.currentTime, audioRef.current.paused)
       audioRef.current.currentTime === 0 && audioRef.current.paused ? (audioRef.current.play(), setPauseStatus(false)) : 
       audioRef.current.paused ? (audioRef.current.play(), setPauseStatus(false)) : (audioRef.current.pause(), setPauseStatus(true))}
-    // event.target.classList.contains("play") && audioRef.current.paused || audioRef.current.currentTime !== 0 ? audioRef.current.play() : audioRef.current.pause()
   }
 
   const handleScroll = () => {
@@ -99,7 +64,6 @@ function App() {
   
   return (
     <div>
-
       <img src={texeture} alt="" className='shape__bg'/>
 
       {/* <!--==================== HEADER ====================--> */}
@@ -112,18 +76,10 @@ function App() {
           
             <div className={`nav__menu ${navOpen ? "show-menu" : ""}`} id="nav-menu">
               <ul className="nav__list">
-                <li className="nav__item">
-                  <Link to="#home" onClick={() => setNavOpen(false)} className="nav__link">Home</Link>
-                </li>
-                <li className="nav__item">
-                  <Link to="#about" onClick={() => setNavOpen(false)} className="nav__link">about us</Link>
-                </li>
-                <li className="nav__item">
-                  <Link to="#items" onClick={() => setNavOpen(false)} className="nav__link">items</Link>
-                </li>
-                <li className="nav__item">
-                  <Link to="#party" onClick={() => setNavOpen(false)} className="nav__link">party</Link>
-                </li>
+                <NavLinks route={'home'} setNavOpen={setNavOpen} title={"Home"}/>
+                <NavLinks route={'about'} setNavOpen={setNavOpen} title={"About"}/>
+                <NavLinks route={'items'} setNavOpen={setNavOpen} title={"Itmes"}/>
+                <NavLinks route={'party'} setNavOpen={setNavOpen} title={"Party"}/>
               </ul>
 
               <div className="nav__close" id="nav-close" 
@@ -258,15 +214,9 @@ function App() {
               <h3 className="footer__title">Social Media</h3>
 
               <ul className="footer__social">
-                <a href="#" className="footer__social-link">
-                  <i className="fa-brands fa-x-twitter"></i>
-                </a>
-                <a href="#" className="footer__social-link">
-                  <i className="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://github.com/Steeve26" target='_blank' className="footer__social-link">
-                  <i className="fa-brands fa-github"></i>
-                </a>
+                <SocialLinks link={"https://www.twitter.com"} iconClasses={"fa-brands fa-x-twitter"}/>
+                <SocialLinks link={"https://www.instagram.com"} iconClasses={"fa-brands fa-instagram"}/>
+                <SocialLinks link={"https://www.github.com/Steeve26"} iconClasses={"fa-brands fa-github"}/>
               </ul>
             </div>
           </div>
