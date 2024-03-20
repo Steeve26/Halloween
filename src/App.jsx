@@ -4,7 +4,7 @@ import { HiMenuAlt2 } from "react-icons/hi";
 import ScrollReveal from 'scrollreveal'
 import './App.css'
 import {bat, categoryPumpkin, gohst, homePumpkin, logo, 
-        stars, texeture, tree1, tree2, witchHat, wave1, wave2, scareCrow, itemApple, itemBroom, itemPumpkin, itemSpider, itemHat, cauldron} from './exports.js'
+        stars, texeture, tree1, tree2, witchHat, wave1, wave2, scareCrow, itemApple, itemBroom, itemPumpkin, itemSpider, itemHat, cauldron, HalloweenTunes} from './exports.js'
 import audioLoader from './components/audioLoader.jsx';
 const tunes = lazy(() => import('../src/assets/Halloween tunes.mp3')) 
 
@@ -369,7 +369,7 @@ function App() {
 
       <!--=============== MAIN JS ===============-->
       <script src="assets/js/main.js"></script> */}
-      <audio style={{opacity: '0', pointerEvents: 'none'}} ref={audioRef} src="../src/assets/Halloween tunes.mp3" loop/>
+      <audio style={{opacity: '0', pointerEvents: 'none'}} ref={audioRef} src={HalloweenTunes} loop/>
       <button className={`play ${!showScroll && 'adjust'}`} onClick={playTunes}>
         { pauseStatus ?
           <>
