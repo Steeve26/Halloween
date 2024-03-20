@@ -1,14 +1,59 @@
-import { useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import { HiMenuAlt2 } from "react-icons/hi";
 import ScrollReveal from 'scrollreveal'
 import './App.css'
-import {bat, homePumpkin, logo, stars, texeture, tree1, tree2} from './exports.js'
+import {bat, categoryPumpkin, gohst, homePumpkin, logo, 
+        stars, texeture, tree1, tree2, witchHat, wave1, wave2, scareCrow, itemApple, itemBroom, itemPumpkin, itemSpider, itemHat, cauldron} from './exports.js'
+import audioLoader from './components/audioLoader.jsx';
+const tunes = lazy(() => import('../src/assets/Halloween tunes.mp3')) 
 
 function App() {
   const [navOpen, setNavOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
+  const [pauseStatus, setPauseStatus] = useState(true)
+  console.log('ps', pauseStatus);
+  const audioRef = useRef(null);
+
+  const tunes = new Audio('../src/assets/Halloween tunes.mp3')
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        setHasInteracted(true);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   if(audioRef.current) {
+  //     setPauseStatus(audioRef.current.pause)
+  //   }
+  // }, [audioRef.current])
+
+  const playTunes = (event) => {
+    // console.log(hasInteracted);
+    // event._reactName == 'onClick' && console.log('test', !audioRef.current.paused, event.target.classList.contains("play"))
+    // console.log('paused', audioRef.current.paused);
+    // if ((!audioRef.current.paused && audioRef.current.currentTime !== 0) && hasInteracted) {
+    //   audioRef.current.play();
+    // }
+    // event._reactName == 'onClick' && 
+    // !audioRef.current.paused ?
+    // event.target.classList.contains("play") && audioRef.current.pause() :
+    // audioRef.current.play();
+    if (event.target.classList.contains("play")) {
+      console.log('test', audioRef.current.currentTime, audioRef.current.paused)
+      audioRef.current.currentTime === 0 && audioRef.current.paused ? (audioRef.current.play(), setPauseStatus(false)) : 
+      audioRef.current.paused ? (audioRef.current.play(), setPauseStatus(false)) : (audioRef.current.pause(), setPauseStatus(true))}
+    // event.target.classList.contains("play") && audioRef.current.paused || audioRef.current.currentTime !== 0 ? audioRef.current.play() : audioRef.current.pause()
+  }
 
   const handleScroll = () => {
     if (window.scrollY >= 50) {
@@ -125,27 +170,27 @@ function App() {
 
               <div className="category__container container grid">
                 <div className="category__card">
-                  <img src="./assets/category-pumpkin.png" alt="category image" className='category__img'/>
+                  <img src={categoryPumpkin} alt="category image" className='category__img'/>
                   <h3 className="category__title">Pumpkins</h3>
                   <p className="category__description">Light up horror pumpkins to scare at night</p>
-                  <img src="./assets/stars.png" alt="category image" className='category__star' />
+                  <img src={stars} alt="category image" className='category__star' />
                 </div>
                 
                 <div className="category__card">
-                  <img src="./assets/category-ghost.png" alt="category image" className='category__img'/>
-                  <h3 className="category__title">Ghost</h3>
+                  <img src={gohst} alt="category image" className='category__img'/>
+                  <h3 className="category__title">Apparitions </h3>
                   <p className="category__description">Spooky ghosts to scare in the most haunted houses</p>
-                  <img src="./assets/stars.png" alt="category image" className='category__star' />
+                  <img src={stars} alt="category image" className='category__star' />
                 </div>
                 
                 <div className="category__card">
-                  <img src="./assets/category-witch-hat.png" alt="category image" className='category__img'/>
+                  <img src={witchHat}  alt="category image" className='category__img'/>
                   <h3 className="category__title">Witch Hat</h3>
                   <p className="category__description">
                     The most elegant witch hats you can vlear and scare
                   </p>
                   
-                  <img src="./assets/stars.png" alt="category image" className='category__star' />
+                  <img src={stars} alt="category image" className='category__star' />
                   
                 </div>
               </div>
@@ -165,7 +210,7 @@ function App() {
                   </p>
                   <a href="#" className="button">Know More!!!</a>
                 </div>
-                <img src="./assets/about-scare.png" alt="about image" className="about__img" />
+                <img src={scareCrow} alt="about image" className="about__img" />
               </div>
           </section>
 
@@ -174,7 +219,7 @@ function App() {
             <h2 className="section__title">Select your <br/> accursed item</h2>
             <div className="items__container container grid">
               <article className="items__card">
-                <img src="./assets/item-apple.png" alt="items image" className="items__img" />
+                <img src={itemApple} alt="items image" className="items__img" />
                 <h3 className="items__name">Candy Apple</h3>
                 <span className="items__price">$4.99</span>
                 <button className="items__button">
@@ -183,7 +228,7 @@ function App() {
               </article>
 
               <article className="items__card">
-                <img src="./assets/item-broom.png" alt="items image" className="items__img" />
+                <img src={itemBroom} alt="items image" className="items__img" />
                 <h3 className="items__name">Wicked Broom</h3>
                 <span className="items__price">$12.99</span>
                 <button className="items__button">
@@ -192,7 +237,7 @@ function App() {
               </article>
 
               <article className="items__card">
-                <img src="./assets/item-pumpkin.png" alt="items image" className="items__img" />
+                <img src={itemPumpkin} alt="items image" className="items__img" />
                 <h3 className="items__name">Pumpkin</h3>
                 <span className="items__price">$7.99</span>
                 <button className="items__button">
@@ -202,7 +247,7 @@ function App() {
 
 
               <article className="items__card">
-                <img src="./assets/item-spider.png" alt="items image" className="items__img" />
+                <img src={itemSpider} alt="items image" className="items__img" />
                 <h3 className="items__name">Spooky Spider</h3>
                 <span className="items__price">$9.99</span>
                 <button className="items__button">
@@ -212,7 +257,7 @@ function App() {
 
 
               <article className="items__card">
-                <img src="./assets/item-witch-hat.png" alt="items image" className="items__img" />
+                <img src={itemHat} alt="items image" className="items__img" />
                 <h3 className="items__name">Witch Hat</h3>
                 <span className="items__price">$15.99</span>
                 <button className="items__button">
@@ -237,10 +282,10 @@ function App() {
                   <a href="#" className="button">Join The Party!!!</a>
                 </div>
                 <div className="party__images">
-                  <img src="./assets/party-cauldron.png" alt="party image" className="party__img" />
+                  <img src={cauldron} alt="party image" className="party__img" />
 
-                  <img src="./assets/stars.png" alt="party image" className="party__star-1" />
-                  <img src="./assets/stars.png" alt="party image" className="party__star-2" /></div>
+                  <img src={stars} alt="party image" className="party__star-1" />
+                  <img src={stars} alt="party image" className="party__star-2" /></div>
               </div>
           </section>
       </main>
@@ -324,7 +369,27 @@ function App() {
 
       <!--=============== MAIN JS ===============-->
       <script src="assets/js/main.js"></script> */}
-    
+      <audio style={{opacity: '0', pointerEvents: 'none'}} ref={audioRef} src="../src/assets/Halloween tunes.mp3" loop/>
+      <button className={`play ${!showScroll && 'adjust'}`} onClick={playTunes}>
+        { pauseStatus ?
+          <>
+            <img className={'wave'} src={wave1} width={'53%'} alt="sound wave" style={{pointerEvents: 'none'}}/>
+            <img className={'wave'} src={wave2} width={'66%'} alt="sound wave" style={{pointerEvents: 'none'}}/>
+          </> :
+          <svg id="wave" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 38.05">
+            <title>Audio Wave</title>
+            <path id="Line_1" data-name="Line 1" d="M0.91,15L0.78,15A1,1,0,0,0,0,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H0.91Z"/>
+            <path id="Line_2" data-name="Line 2" d="M6.91,9L6.78,9A1,1,0,0,0,6,10V28a1,1,0,1,0,2,0s0,0,0,0V10A1,1,0,0,0,7,9H6.91Z"/>
+            <path id="Line_3" data-name="Line 3" d="M12.91,0L12.78,0A1,1,0,0,0,12,1V37a1,1,0,1,0,2,0s0,0,0,0V1a1,1,0,0,0-1-1H12.91Z"/>
+            <path id="Line_4" data-name="Line 4" d="M18.91,10l-0.12,0A1,1,0,0,0,18,11V27a1,1,0,1,0,2,0s0,0,0,0V11a1,1,0,0,0-1-1H18.91Z"/>
+            <path id="Line_5" data-name="Line 5" d="M24.91,15l-0.12,0A1,1,0,0,0,24,16v6a1,1,0,0,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H24.91Z"/>
+            {/* <path id="Line_6" data-name="Line 6" d="M30.91,10l-0.12,0A1,1,0,0,0,30,11V27a1,1,0,1,0,2,0s0,0,0,0V11a1,1,0,0,0-1-1H30.91Z"/>
+            <path id="Line_7" data-name="Line 7" d="M36.91,0L36.78,0A1,1,0,0,0,36,1V37a1,1,0,1,0,2,0s0,0,0,0V1a1,1,0,0,0-1-1H36.91Z"/>
+            <path id="Line_8" data-name="Line 8" d="M42.91,9L42.78,9A1,1,0,0,0,42,10V28a1,1,0,1,0,2,0s0,0,0,0V10a1,1,0,0,0-1-1H42.91Z"/>
+            <path id="Line_9" data-name="Line 9" d="M48.91,15l-0.12,0A1,1,0,0,0,48,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H48.91Z"/> */}
+          </svg>
+        }
+      </button>
     </div>
   )
 }

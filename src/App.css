@@ -726,7 +726,7 @@ body {
 
 /*=============== SCROLL UP ===============*/
 
-.scrollup {
+.scrollup, .play {
   position: fixed;
   right: 1rem;
   bottom: -50%;
@@ -741,7 +741,7 @@ body {
   transition: bottom .3s, transform .3s, color .3s;
 }
 
-.scrollup:hover {
+.scrollup:hover, .play:hover {
   transform: translateY(-.25rem);
   color: var(--white-color);
 }
@@ -750,6 +750,113 @@ body {
 
 .show-scroll {
   bottom: 3rem;
+}
+
+.play {
+  bottom: 7em;
+  padding: .3rem;
+  border-radius: 10em;
+  right: .8rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play:hover .wave:first-child {
+  opacity: 0;
+}
+.play .wave:first-child {
+  position: absolute;
+  transition-duration: .3s;
+}
+.play svg {
+  pointer-events: none;
+}
+
+.adjust {
+  bottom: 3rem;
+}
+
+.play path {
+  stroke: var(--first-color);
+}
+
+.loader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+#wave {
+	height: 35px;
+	width: 35px;
+	fill: var(--first-color);
+}
+
+#Line_1 {
+  animation: pulse 1s infinite;
+  animation-delay: 0s;
+}
+
+#Line_2 {
+  animation: pulse 1s infinite;
+  animation-delay: 0.15s;
+}
+
+#Line_3 {
+  animation: pulse 1s infinite;
+  animation-delay: 0.30s;
+}
+
+#Line_4 {
+  animation: pulse 1s infinite;
+  animation-delay: 0.45s;
+}
+
+#Line_5 {
+  animation: pulse 1s infinite;
+  animation-delay: 0.60s;
+}
+
+/* #Line_6 {
+  animation: pulse 1s infinite;
+  animation-delay: 0.75s;
+}
+
+#Line_7 {
+  animation: pulse 1s infinite;
+  animation-delay: 0.90s;
+}
+
+#Line_8 {
+  animation: pulse 1s infinite;
+  animation-delay: 1.05s;
+}
+
+#Line_9 {
+  animation: pulse 1s infinite;
+  animation-delay: 1.20s;
+} */
+
+
+@keyframes pulse {
+	0% {
+		transform: scaleY(1);
+		transform-origin: 50% 50%;
+	}
+	
+	50% {
+		transform: scaleY(.7);
+		transform-origin: 50% 50%;
+	}
+	
+	100% {
+		transform: scaleY(1);
+		transform-origin: 50% 50%;
+	}
 }
 
 /*=============== BREAKPOINTS ===============*/
@@ -1037,7 +1144,11 @@ body {
   }
   
   .scrollup {
-    right: 3rem;
+    right: 2rem;
+  }
+
+  .play {
+    right: 1.8rem;
   }
 }
 
