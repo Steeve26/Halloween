@@ -6,8 +6,13 @@ import './App.css'
 import {bat, categoryPumpkin, gohst, homePumpkin, logo, 
         stars, texeture, tree1, tree2, witchHat, wave1, 
         wave2, scareCrow, itemApple, itemBroom, itemPumpkin, 
-        itemSpider, itemHat, cauldron, HalloweenTunes, footerTree1, footerTree2, skull} from './exports.js'
-import audioLoader from './components/audioLoader.jsx';
+        itemSpider, itemHat, cauldron, HalloweenTunes, footerTree1, 
+        footerTree2, skull} from './exports.js'
+import CategoryCard from './components/categoryCard.jsx'
+import ItemCard from './components/article.jsx';
+import { Link } from 'react-router-dom';
+import FooterContainer from './components/footerContainer.jsx';
+
 const tunes = lazy(() => import('../src/assets/Halloween tunes.mp3')) 
 
 function App() {
@@ -108,16 +113,16 @@ function App() {
             <div className={`nav__menu ${navOpen ? "show-menu" : ""}`} id="nav-menu">
               <ul className="nav__list">
                 <li className="nav__item">
-                  <a href="#home" onClick={() => setNavOpen(false)} className="nav__link">Home</a>
+                  <Link to="#home" onClick={() => setNavOpen(false)} className="nav__link">Home</Link>
                 </li>
                 <li className="nav__item">
-                  <a href="#about" onClick={() => setNavOpen(false)} className="nav__link">about us</a>
+                  <Link to="#about" onClick={() => setNavOpen(false)} className="nav__link">about us</Link>
                 </li>
                 <li className="nav__item">
-                  <a href="#items" onClick={() => setNavOpen(false)} className="nav__link">items</a>
+                  <Link to="#items" onClick={() => setNavOpen(false)} className="nav__link">items</Link>
                 </li>
                 <li className="nav__item">
-                  <a href="#party" onClick={() => setNavOpen(false)} className="nav__link">party</a>
+                  <Link to="#party" onClick={() => setNavOpen(false)} className="nav__link">party</Link>
                 </li>
               </ul>
 
@@ -171,30 +176,9 @@ function App() {
               <h2 className="section__title">Choose your <br /> spookey category</h2>
 
               <div className="category__container container grid">
-                <div className="category__card">
-                  <img src={categoryPumpkin} alt="category image" className='category__img'/>
-                  <h3 className="category__title">Pumpkins</h3>
-                  <p className="category__description">Light up horror pumpkins to scare at night</p>
-                  <img src={stars} alt="category image" className='category__star' />
-                </div>
-                
-                <div className="category__card">
-                  <img src={gohst} alt="category image" className='category__img'/>
-                  <h3 className="category__title">Apparitions </h3>
-                  <p className="category__description">Spooky ghosts to scare in the most haunted houses</p>
-                  <img src={stars} alt="category image" className='category__star' />
-                </div>
-                
-                <div className="category__card">
-                  <img src={witchHat}  alt="category image" className='category__img'/>
-                  <h3 className="category__title">Witch Hat</h3>
-                  <p className="category__description">
-                    The most elegant witch hats you can vlear and scare
-                  </p>
-                  
-                  <img src={stars} alt="category image" className='category__star' />
-                  
-                </div>
+                <CategoryCard src={categoryPumpkin} title={"Pumpkins"} description={"Light up horror pumpkins to scare at night"}/>
+                <CategoryCard src={gohst} title={"Apparitions"} description={"Spooky ghosts to scare in the most haunted houses"}/>
+                <CategoryCard src={witchHat} title={"Witch Hat"} description={"The most elegant witch hats you can vlear and scare"}/>
               </div>
           </section>
 
@@ -220,52 +204,11 @@ function App() {
           <section className="items section" id="items">
             <h2 className="section__title">Select your <br/> accursed item</h2>
             <div className="items__container container grid">
-              <article className="items__card">
-                <img src={itemApple} alt="items image" className="items__img" />
-                <h3 className="items__name">Candy Apple</h3>
-                <span className="items__price">$4.99</span>
-                <button className="items__button">
-                  <i className="fa-regular fa-heart"></i>
-                </button>
-              </article>
-
-              <article className="items__card">
-                <img src={itemBroom} alt="items image" className="items__img" />
-                <h3 className="items__name">Wicked Broom</h3>
-                <span className="items__price">$12.99</span>
-                <button className="items__button">
-                  <i className="fa-regular fa-heart"></i>
-                </button>
-              </article>
-
-              <article className="items__card">
-                <img src={itemPumpkin} alt="items image" className="items__img" />
-                <h3 className="items__name">Pumpkin</h3>
-                <span className="items__price">$7.99</span>
-                <button className="items__button">
-                  <i className="fa-regular fa-heart"></i>
-                </button>
-              </article>
-
-
-              <article className="items__card">
-                <img src={itemSpider} alt="items image" className="items__img" />
-                <h3 className="items__name">Spooky Spider</h3>
-                <span className="items__price">$9.99</span>
-                <button className="items__button">
-                  <i className="fa-regular fa-heart"></i>
-                </button>
-              </article>
-
-
-              <article className="items__card">
-                <img src={itemHat} alt="items image" className="items__img" />
-                <h3 className="items__name">Witch Hat</h3>
-                <span className="items__price">$15.99</span>
-                <button className="items__button">
-                  <i className="fa-regular fa-heart"></i>
-                </button>
-              </article>
+              <ItemCard src={itemApple} title={"Poisoned Apple"} price={"4.99"}/>
+              <ItemCard src={itemBroom} title={"Wicked Broom"} price={"12.99"}/>
+              <ItemCard src={itemPumpkin} title={"Pumpkin"} price={"7.99"}/>
+              <ItemCard src={itemSpider} title={"Spooky Spider"} price={"9.99"}/>
+              <ItemCard src={itemHat} title={"Witch Hat"} price={"15.99"}/>
             </div>
           </section>
 
@@ -307,35 +250,9 @@ function App() {
           </div>
 
           <div className="footer__content">
-            <div>
-              <h3 className="footer__title">About Us</h3>
-
-              <ul className="footer__links">
-                <li><a href="#" className="footer__link">About us</a></li>
-                <li><a href="#" className="footer__link">Features</a></li>
-                <li><a href="#" className="footer__link">News & Blog</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="footer__title">Services</h3>
-
-              <ul className="footer__links">
-                <li><a href="#" className="footer__link">Pricing</a></li>
-                <li><a href="#" className="footer__link">Discounts</a></li>
-                <li><a href="#" className="footer__link">Rewards</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="footer__title">Company</h3>
-
-              <ul className="footer__links">
-                <li><a href="#" className="footer__link">Blog</a></li>
-                <li><a href="#" className="footer__link">Celebrations</a></li>
-                <li><a href="#" className="footer__link">About</a></li>
-              </ul>
-            </div>
+            <FooterContainer title={"About Us"} links={['About Us', 'Features', 'News & Blog']}/>
+            <FooterContainer title={"Services"} links={['Pricing', 'Discounts', 'Rewards']}/>
+            <FooterContainer title={"Company"} links={['Blog', 'Celebrations', 'Jobs']}/>
 
             <div>
               <h3 className="footer__title">Social Media</h3>
@@ -365,12 +282,6 @@ function App() {
         <i className="fa-solid fa-arrow-up" style={{ fontSize: '1.5rem'}}></i>
       </a>
       
-      {/* <!--=============== SCROLLREVEAL ===============--> */}
-
-      {/* <script src=""></script>
-
-      <!--=============== MAIN JS ===============-->
-      <script src="assets/js/main.js"></script> */}
       <audio style={{opacity: '0', pointerEvents: 'none'}} ref={audioRef} src={HalloweenTunes} loop/>
       <button className={`play ${!showScroll && 'adjust'}`} onClick={playTunes}>
         { pauseStatus ?
@@ -385,10 +296,6 @@ function App() {
             <path id="Line_3" data-name="Line 3" d="M12.91,0L12.78,0A1,1,0,0,0,12,1V37a1,1,0,1,0,2,0s0,0,0,0V1a1,1,0,0,0-1-1H12.91Z"/>
             <path id="Line_4" data-name="Line 4" d="M18.91,10l-0.12,0A1,1,0,0,0,18,11V27a1,1,0,1,0,2,0s0,0,0,0V11a1,1,0,0,0-1-1H18.91Z"/>
             <path id="Line_5" data-name="Line 5" d="M24.91,15l-0.12,0A1,1,0,0,0,24,16v6a1,1,0,0,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H24.91Z"/>
-            {/* <path id="Line_6" data-name="Line 6" d="M30.91,10l-0.12,0A1,1,0,0,0,30,11V27a1,1,0,1,0,2,0s0,0,0,0V11a1,1,0,0,0-1-1H30.91Z"/>
-            <path id="Line_7" data-name="Line 7" d="M36.91,0L36.78,0A1,1,0,0,0,36,1V37a1,1,0,1,0,2,0s0,0,0,0V1a1,1,0,0,0-1-1H36.91Z"/>
-            <path id="Line_8" data-name="Line 8" d="M42.91,9L42.78,9A1,1,0,0,0,42,10V28a1,1,0,1,0,2,0s0,0,0,0V10a1,1,0,0,0-1-1H42.91Z"/>
-            <path id="Line_9" data-name="Line 9" d="M48.91,15l-0.12,0A1,1,0,0,0,48,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H48.91Z"/> */}
           </svg>
         }
       </button>

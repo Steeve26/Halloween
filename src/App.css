@@ -821,27 +821,6 @@ body {
   animation-delay: 0.60s;
 }
 
-/* #Line_6 {
-  animation: pulse 1s infinite;
-  animation-delay: 0.75s;
-}
-
-#Line_7 {
-  animation: pulse 1s infinite;
-  animation-delay: 0.90s;
-}
-
-#Line_8 {
-  animation: pulse 1s infinite;
-  animation-delay: 1.05s;
-}
-
-#Line_9 {
-  animation: pulse 1s infinite;
-  animation-delay: 1.20s;
-} */
-
-
 @keyframes pulse {
 	0% {
 		transform: scaleY(1);
